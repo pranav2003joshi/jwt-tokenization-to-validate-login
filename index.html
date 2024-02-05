@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI DataFrame Example</title>
+</head>
+<body>
+    <h1>DataFrame Contents</h1>
+    <table border="1">
+        <tr>
+            <th>emp_id</th>
+            <th>geo_data</th>
+            <th>point_name</th>
+            <th>timestamp</th>
+        </tr>
+        {% for row in df %}
+            <tr>
+                <td>{{ row.emp_id }}</td>
+                <td>{{ row.geo_data }}</td>
+                <td>{{ row.point_name }}</td>
+                <td>{{ row.timestamp }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    <form action="/get/{emp_id}" method="get">
+        <label for="emp_id">Get Employee by ID:</label>
+        <input type="text" name="emp_id" id="emp_id">
+        <button type="submit">Get</button>
+    </form>
+
+    <br>
+
+    <form action="/add/{emp_id}" method="post">
+        <label for="geo_data">Geo Data:</label>
+        <input type="text" name="geo_data" id="geo_data">
+        <label for="point_name">Point Name:</label>
+        <input type="text" name="point_name" id="point_name">
+        <label for="timestamp">Timestamp:</label>
+        <input type="text" name="timestamp" id="timestamp">
+        <button type="submit">Add</button>
+    </form>
+
+    <br>
+
+    <form action="/delete/{emp_id}" method="delete">
+        <label for="delete_emp_id">Delete Employee by ID:</label>
+        <input type="text" name="delete_emp_id" id="delete_emp_id">
+        <button type="submit">Delete</button>
+    </form>
+
+    <br>
+
+    <form action="/update/{emp_id}" method="patch">
+        <label for="update_emp_id">Update Employee by ID:</label>
+        <input type="text" name="update_emp_id" id="update_emp_id">
+        <label for="update_geo_data">New Geo Data:</label>
+        <input type="text" name="update_geo_data" id="update_geo_data">
+        <label for="update_point_name">New Point Name:</label>
+        <input type="text" name="update_point_name" id="update_point_name">
+        <label for="update_timestamp">New Timestamp:</label>
+        <input type="text" name="update_timestamp" id="update_timestamp">
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
